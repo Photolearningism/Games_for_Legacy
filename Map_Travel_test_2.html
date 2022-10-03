@@ -1,0 +1,110 @@
+<html>
+<head>
+
+</head>
+
+<body onclick="javascript: testFunc(event);" style="background-image:url('Dream1.jpg');background-repeat:no-repeat;">
+<script src="jquery.js" ></script>
+
+    <script type="text/javascript">
+		function testFunc(event)
+		{
+		
+   var parentOffset = $("#test1").parent().offset(); 
+   var relX = event.pageX - parentOffset.left;
+   var relY = event.pageY - parentOffset.top;
+   var relXNew = relX; 
+   var relYNew = relY; 
+
+   
+
+	var defaultHeight = 402;
+	var relHeight;
+	
+if(relY<=600) {	
+if(relY<=100 && relY>=0) {
+		relHeight = 10;
+		relXNew = relX - 4;
+		relYNew = relY - 3;
+	}
+	if(relY<=200 && relY>=100) {
+		relHeight = 50;
+		relXNew = relX - 32;
+		relYNew = relY - 25;
+	}
+	if(relY<=300 && relY>=200) {
+		relHeight = 100;
+		relXNew = relX - 55;
+		relYNew = relY - 45;
+	}
+	if(relY<=400 && relY>=300) {
+		relHeight = 200;
+		relXNew = relX - 125;
+		relYNew = relY - 100;
+	}
+	if(relY<=500 && relY>=400) {
+		relHeight = 300;
+		relXNew = relX - 175;
+		relYNew = relY - 175;
+	}
+ 	if(relY<=600 && relY>=500) {
+		relHeight = 400;
+		relXNew = relX - 200;
+		relYNew = relY - 200;
+
+	}
+	if(relY>600) {
+
+	}
+	$( "#test1" ).animate({
+    //opacity: 0.25,
+    //left: "+=50",
+    left: relXNew,
+	top: relYNew,
+	height: relHeight
+	//height: "toggle"
+	//left: "500"
+	//top: relY
+  //}, 5000, function() {
+  //});
+		});
+		}
+	}
+		
+function puzzle(puzId,puzOptions) {
+	var puzzleId = puzId+puzOptions;
+	//alert(puzzleId);
+	document.getElementById(puzzleId).style.display="block";
+}	
+
+function puzzleOff(puzId,puzOptions) {
+	var puzzleId = puzId+puzOptions;
+	//alert(puzzleId);
+	document.getElementById(puzzleId).style.display="none";
+}
+	
+    </script>
+	
+	
+	<div id="test1" style="position:relative;top:350px;height:400px;overflow:fixed;">
+<img id="guy" src="guy1.png" style="height:100%;" />
+
+</div>
+<div onmouseover="javascript: puzzle(this.id,'_1');" onmouseout="javascript: puzzleOff(this.id,'_1');" id="puzzle1" style="width:300px;height:300px;position:absolute;top:550px;left:800px;">
+	<div id="puzzle1_1" style="display:none;border:1px dotted red;" >
+		<table style="border:0px transparent;">
+			<tr>
+				<td>
+				<div onclick="javascript: var audio = new Audio('whoosh-6316.mp3');audio.play();audio.loop = false;alert('Nothing here');" style="cursor:pointer;font-size:18pt;" onmouseover="javascript: this.style.color='blue';" onmouseout="javascript: this.style.color='black';">Dig&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</td>
+				<td>
+				<div onclick="javascript: alert('Looks like deep grass');" style="cursor:pointer;font-size:18pt;" onmouseover="javascript: this.style.color='blue';" onmouseout="javascript: this.style.color='black';">Examine</div>
+				</td>
+			</tr>	
+		</table>
+	</div>
+</div>
+</body>
+
+
+</html>
